@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
     //4 - buit
     
     const layout = [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
         1, 3, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 3, 1,
         1, 0, 1, 1, 0, 1, 1, 1, 0, 4, 4, 4, 0, 1, 1, 0, 4, 4, 4, 0, 1, 1, 1, 0, 1, 1, 0, 1,
         1, 0, 1, 1, 0, 1, 1, 1, 0, 4, 4, 4, 0, 1, 1, 0, 4, 4, 4, 0, 1, 1, 1, 0, 1, 1, 0, 1,
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
         1, 0, 1, 1, 0, 1, 1, 1, 0, 4, 4, 4, 0, 1, 1, 0, 4, 4, 4, 0, 1, 1, 1, 0, 1, 1, 0, 1,
         1, 0, 1, 1, 0, 1, 1, 1, 0, 4, 4, 4, 0, 1, 1, 0, 4, 4, 4, 0, 1, 1, 1, 0, 1, 1, 0, 1,
         1, 3, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 3, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
     ]
     
     let squares = [];
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
     createBoard();
     console.log(squares)
 
-    let posicioPrincep = 364;
+    let posicioPrincep = 4;
     squares[posicioPrincep].classList.add("princep");
 
     function movePrincep(e) {
@@ -76,6 +76,9 @@ document.addEventListener("DOMContentLoaded", function(){
             case 'ArrowLeft':
                 if(!squares[posicioPrincep-1].classList.contains('mur')&&
                     !squares[posicioPrincep-1].classList.contains('blue'))
+                    if(squares[posicioPrincep - 1] === squares[364]){
+                        posicioPrincep = 392
+                    }
                 posicioPrincep -= 1
                 break;
             case 'ArrowRight':
