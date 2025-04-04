@@ -1,0 +1,65 @@
+html, body{
+    background-color: rgb(168, 77, 77);
+}
+
+.grid{
+    margin: 0 auto;
+    width: 840px;
+    height: 840px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    background-color: white;
+}
+
+h3{
+    text-align: center;
+}
+
+.grid div{
+    width: 30px;
+    height: 30px;
+}
+
+.mur{
+    background-image: url(./img/mur.jpg);
+    background-size: cover;
+}
+.llibres{
+    background-image: url(./img/llibres.png);
+    background-size: cover;
+}
+.brown{
+    background-color: rgba(82, 56, 39, 0.842);
+}
+.rosa{
+    background-image: url(./img/rosa.jpg);
+    background-size: cover;
+}
+.white{
+    background-color: white;
+}
+
+.princep{
+    background-image: url(./img/jordi.png);
+    background-size: cover;
+}
+.drac{
+    background-image: url(./img/drac.png);
+    background-size: cover;
+}
+.drac2{
+    background-image: url(./img/drac2.png);
+    background-size: cover;
+}
+.drac3{
+    background-image: url(./img/drac3.png);
+    background-size: cover;
+}
+.drac4{
+    background-image: url(./img/drac4.png);
+    background-size: cover;
+}/*
+.drac-assustat{
+
+}
