@@ -135,9 +135,14 @@ document.addEventListener("DOMContentLoaded", function(){
         new Drac('drac', 348, 250),
         new Drac('drac2', 351, 250),
         new Drac('drac3', 404, 250),
-        new Drac('drac4', 406, 250)
+        new Drac('drac4', 407, 250)
     ]
 
-console.log(dracs)
+//console.log(dracs)
+
+dracs.forEach(drac=>{
+ 
+    squares[drac.currentIndex].classList.add(drac.className, 'drac')
+})
 
 })
