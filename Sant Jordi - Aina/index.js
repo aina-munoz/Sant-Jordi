@@ -116,7 +116,9 @@ document.addEventListener("DOMContentLoaded", function(){
         if(squares[posicioPrincep].classList.contains('llibres')){
             score+=10
             scoreDisplay.innerHTML=score
-            squares[posicioPrincep].classList.remove('llibres')
+            squares[posicioPrincep].classList.remove('llibres');
+            espantaDracs(true)
+            setTimeout(()=>espantaDracs(false),1000)
         }
     }
 
@@ -140,9 +142,25 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //console.log(dracs)
 
-dracs.forEach(drac=>{
- 
-    squares[drac.currentIndex].classList.add(drac.className, 'drac')
+dracs.forEach(drac =>squares[drac.currentIndex].classList.add(drac.className, 'drac'))
+
+dracs.forEach(drac =>moveDrac(drac))
+
+function moveDrac(drac) {
+    const directions = [-1, 1, width, -width]
+    let direction = directions[Math.floor(Math.random() * directions.length)]
+
+    drac.timerId = setInterval(function () {
+        if (!squares[drac.currentIndex + direction].classList.contains('mur') && !squares[drac.currentIndex + direction].classList.contains('drac')) {
+            squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac2')
+            drac.currentIndex += direction
+            squares[drac.currentIndex].classList.add(drac.className, 'drac')
+        } else direction = directions[Math.floor(Math.random() * directions.length)]
+    }, drac.speed
+    )
+
+
+}
+    
 })
 
-})
