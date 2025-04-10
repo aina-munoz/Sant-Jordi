@@ -122,14 +122,18 @@ document.addEventListener("DOMContentLoaded", function(){
         }
     }
 
+    function espantaDracs(scaredDrac) {
+        dracs.forEach(drac => drac.isScared = scaredDrac)
+    }
+
     class Drac {
-        constructor(className, startIndex, speed){
-            this.className=className
-            this.startIndex=startIndex
-            this.speed=speed
-            this.currentIndex=startIndex
-            this.isScared= false
-            this.timerId= NaN
+        constructor(className, startIndex, speed) {
+            this.className = className
+            this.startIndex = startIndex
+            this.speed = speed
+            this.currentIndex = startIndex
+            this.isScared = false
+            this.timerId = NaN
         }
     }
 
@@ -142,9 +146,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
 //console.log(dracs)
 
-dracs.forEach(drac =>squares[drac.currentIndex].classList.add(drac.className, 'drac'))
 
-dracs.forEach(drac =>moveDrac(drac))
+dracs.forEach(drac => squares[drac.currentIndex].classList.add(drac.className, 'drac'))
+
+dracs.forEach(drac => moveDrac(drac))
 
 function moveDrac(drac) {
     const directions = [-1, 1, width, -width]
@@ -156,11 +161,21 @@ function moveDrac(drac) {
             drac.currentIndex += direction
             squares[drac.currentIndex].classList.add(drac.className, 'drac')
         } else direction = directions[Math.floor(Math.random() * directions.length)]
+        if(drac.isScared){
+            squares[drac.currentIndex].classList.add(drac.className, 'drac-espantat')
+        }if(drac.isScared && squares[drac.currentIndex].classList.contains('princep')){
+            score += 100
+            scoreDisplay.innerHTML = score
+            squares[drac.currentIndex].classList.remove(drac.className, 'drac3', 'drac4')
+                drac.currentIndex = drac.startIndex
+                drac.isScared = false
+                squares[drac.currentIndex].classList.add(drac.className, 'drac')
+            
+        }
     }, drac.speed
     )
 
 
 }
-    
-})
 
+})
