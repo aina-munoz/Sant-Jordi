@@ -3,37 +3,38 @@ document.addEventListener("DOMContentLoaded", function(){
     const width = 28;
     let score = 0;
     const grid = document.querySelector(".grid");
-    
+
+
     
     const layout = [
         1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-        1, 3, 0, 0, 0, 1, 1, 1, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 1, 1, 1, 0, 0, 0, 3, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 4, 0, 0, 1, 1, 0, 0, 4, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 3, 0, 0, 0, 1, 1, 0, 0, 0, 3, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 3, 0, 0, 0, 3, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 3, 0, 0, 0, 3, 1, 1,
-        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 2, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0,
-        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 3, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1,
-        1, 1, 3, 0, 0, 0, 3, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 3, 0, 0, 0, 3, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 3, 0, 0, 0, 1, 1, 0, 0, 0, 3, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1,
-        1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 4, 0, 0, 1, 1, 0, 0, 4, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1,
-        1, 3, 0, 0, 0, 1, 1, 1, 3, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 3, 1, 1, 1, 0, 0, 0, 3, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1,
+        1, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 4, 3, 3, 1, 1, 3, 3, 4, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
+        3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 1,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 2, 2, 2, 2, 2, 2, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
+        1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 3, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 3, 3, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
+        1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1,
+        1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 4, 3, 3, 1, 1, 3, 3, 4, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 3, 1,
+        1, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3, 1, 1, 1, 3, 3, 3, 3, 1,
+        1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1,
     ]
     
     let squares = [];
@@ -97,17 +98,21 @@ document.addEventListener("DOMContentLoaded", function(){
                 posicioPrincep += 28
                 break;
         }
+
+        var audio = document.getElementById("audio");
+        audio.play();
+
         squares[posicioPrincep].classList.add("princep");
         petalAgafat()
         rosaAgafada()
-        //checkForWin()
-        //checkForGameOver()
+        checkForWin()
+        checkForGameOver()
     }
 
     document.addEventListener('keyup', movePrincep);
     function petalAgafat(){
         if(squares[posicioPrincep].classList.contains('rosa')){
-            score+=2
+            score+=1
             scoreDisplay.innerHTML=score
             squares[posicioPrincep].classList.remove('rosa')
         }
@@ -118,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function(){
             scoreDisplay.innerHTML=score
             squares[posicioPrincep].classList.remove('llibres');
             espantaDracs(true)
-            setTimeout(()=>espantaDracs(false),1000)
+            setTimeout(()=>espantaDracs(false),1500)
         }
     }
 
@@ -157,7 +162,7 @@ function moveDrac(drac) {
 
     drac.timerId = setInterval(function () {
         if (!squares[drac.currentIndex + direction].classList.contains('mur') && !squares[drac.currentIndex + direction].classList.contains('drac')) {
-            squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac2')
+            squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-espantat')
             drac.currentIndex += direction
             squares[drac.currentIndex].classList.add(drac.className, 'drac')
         } else direction = directions[Math.floor(Math.random() * directions.length)]
@@ -166,16 +171,38 @@ function moveDrac(drac) {
         }if(drac.isScared && squares[drac.currentIndex].classList.contains('princep')){
             score += 100
             scoreDisplay.innerHTML = score
-            squares[drac.currentIndex].classList.remove(drac.className, 'drac3', 'drac4')
+            squares[drac.currentIndex].classList.remove(drac.className, 'drac', 'drac-espantat')
                 drac.currentIndex = drac.startIndex
                 drac.isScared = false
                 squares[drac.currentIndex].classList.add(drac.className, 'drac')
             
         }
+        checkForWin()
+        checkForGameOver()
+
     }, drac.speed
     )
 
 
+}
+
+function checkForGameOver(){
+    if(
+        squares[posicioPrincep].classList.contains ('drac') &&
+        ! squares[posicioPrincep].classList.contains ('drac-espantat')
+    ){
+        dracs.forEach(drac=>clearInterval(drac.timerId))
+        document.removeEventListener('keyup', movePrincep)
+        setTimeout(function(){alert('Game over')})
+    }
+}
+
+function checkForWin(){
+    if(score>= 300){
+        dracs.forEach(drac=>clearInterval(drac.timerId))
+        document.removeEventListener('keyup', movePrincep)
+        setTimeout(function(){alert('You have WON')})
+    }
 }
 
 })
